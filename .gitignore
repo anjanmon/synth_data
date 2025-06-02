@@ -11,3 +11,9 @@ wheels/
 
 # Data Folder
 data/
+
+# Ruff
+.ruff_cache
+
+# Environment variables
+.env

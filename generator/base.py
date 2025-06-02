@@ -1,10 +1,18 @@
-from typing import Optional, Dict, Any
 from abc import ABC, abstractmethod
+from typing import Any, Dict, Optional
+
 
 class BaseGenerator(ABC):
-    def __init__(self, name:str, params:Optional[Dict[str,Any]]=None):
-        self.name = name
-        self.parms = params or {}
+    def __init__(self, name: str, params: Optional[Dict[str, Any]] = None):
+        pass
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}"
+    @abstractmethod
+    def synth(self, size: int) -> None:
+        pass
+
+    def add_noise(self) -> None:
+        pass
+
+    @abstractmethod
+    def generate(self, size: int) -> None:
+        pass
