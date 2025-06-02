@@ -1,0 +1,14 @@
+datasets:
+  - name: sine_wave_1
+    size: 100
+    start: 0.0
+    stop: 6.28
+    noise_scale: 0.05
+    add_noise: true
+
+  - name: sine_wave_2
+    size: 200
+    start: 0.0
+    stop: 3.14
+    noise_scale: 0.1
+    add_noise: false
