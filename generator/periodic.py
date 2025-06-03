@@ -11,13 +11,15 @@ class Periodic(BaseGenerator):
         self.synth_output = None
         self.size = None
 
-    def synth(self, size: int, start: int = 0, stop: int = 2 * np.pi) -> None:
+    def synth(self, size: int, start: float = 0, stop: float = 2 * np.pi) -> None:
         self.size = size
         x = np.linspace(start, stop, size)
         y = np.sin(x)
         self.synth_output = np.column_stack((x, y))
 
     def add_noise(self, scale: float = 0.1) -> None:
+        if self.synth_output is None:
+            raise ValueError("synth_output is None. Call synth() before add_noise().")
         noise = np.random.normal(0, scale=0.1, size=self.size)
         self.synth_output[:, 1] += noise
 

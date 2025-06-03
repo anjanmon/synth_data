@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
-
+import numpy as np
 
 class BaseGenerator(ABC):
     def __init__(self, name: str, params: Optional[Dict[str, Any]] = None):
@@ -14,5 +14,5 @@ class BaseGenerator(ABC):
         pass
 
     @abstractmethod
-    def generate(self, size: int) -> None:
+    def generate(self, size: int) -> Optional[np.ndarray]:
         pass
