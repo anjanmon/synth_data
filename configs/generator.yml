@@ -1,5 +1,6 @@
 datasets:
   - name: sine_wave_1
+    type: periodic
     size: 100
     start: 0.0
     stop: 6.28
@@ -7,6 +8,7 @@ datasets:
     add_noise: true
 
   - name: sine_wave_2
+    type: periodic
     size: 200
     start: 0.0
     stop: 3.14
