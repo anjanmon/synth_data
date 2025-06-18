@@ -31,6 +31,9 @@ class Config:
     add_noise: bool = True
     noise_scale: Optional[float] = 0.1
 
+    def metadata(self):
+        pass
+
 
 @dataclass
 class DataGen:
@@ -42,7 +45,10 @@ class DataGen:
     def build(cls, config_path: Optional[str] = None):
         if config_path is None:
             config_path = os.getenv("CONFIG_PATH")
-
+            if not config_path:
+                raise RuntimeError(
+                    "CONFIG_PATH is not set. Please provide the path explicitly or set the CONFIG_PATH environment variable."
+                )
         with open(config_path, "r") as file:
             configs = yaml.safe_load(file)
 
@@ -60,5 +66,5 @@ class DataGen:
 
 if __name__ == "__main__":
     data_gen = DataGen.build()
-    print(data_gen.configs[0].type)
-    print(data_gen.num_configs)
+    # print(data_gen.configs[0].type)
+# print(data_gen.num_configs)
