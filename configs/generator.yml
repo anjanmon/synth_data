@@ -1,5 +1,5 @@
 datasets:
-  - name: sine_wave_1
+  - name: "Pure Sine Wave"
     type: periodic
     size: 100
     start: 0.0
@@ -7,7 +7,7 @@ datasets:
     noise_scale: 0.05
     add_noise: true
 
-  - name: sine_wave_2
+  - name: "Noisy Sine Wave"
     type: periodic
     size: 200
     start: 0.0
