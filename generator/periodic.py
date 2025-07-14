@@ -3,8 +3,9 @@ from typing import Any, Dict, Optional
 import numpy as np
 from base import BaseGenerator
 
+import pandas as pd
 
-class Periodic(BaseGenerator):
+class Sine(BaseGenerator):
     def __init__(self, name: str, params: Optional[Dict[str, Any]] = None) -> None:
         self.name = name
         self.params = params or {}
@@ -47,4 +48,5 @@ class Periodic(BaseGenerator):
         self.synth(size=size, start=start, stop=stop)
         if add_noise:
             self.add_noise(scale=noise_scale)
-        return self.synth_output
+
+        return pd.DataFrame(self.synth_output, columns=["x", "y"])

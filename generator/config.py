@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-class FunctionType(enum.Enum):
-    PERIODIC = "periodic"
+class Function(enum.Enum):
+    SINE = "sine"
 
     @classmethod
     def from_str(cls, name: str):
@@ -24,7 +24,7 @@ class FunctionType(enum.Enum):
 @dataclass
 class Config:
     name: str
-    type: FunctionType
+    function: Function
     size: Optional[int] = 100
     start: Optional[int] = 0
     stop: Optional[int] = 1
@@ -54,7 +54,7 @@ class DataGen:
 
         return cls(
             configs=[
-                Config(**{**cfg, "type": FunctionType.from_str(cfg["type"])})
+                Config(**{**cfg, "function": Function.from_str(cfg["function"])})
                 for cfg in configs["datasets"]
             ]
         )
@@ -62,9 +62,3 @@ class DataGen:
     @property
     def num_configs(self):
         return len(self.configs)
-
-
-if __name__ == "__main__":
-    data_gen = DataGen.build()
-    # print(data_gen.configs[0].type)
-# print(data_gen.num_configs)
